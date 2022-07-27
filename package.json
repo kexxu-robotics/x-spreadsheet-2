@@ -1,6 +1,6 @@
 {
-  "name": "x-data-spreadsheet",
-  "version": "1.1.8",
+  "name": "x-data-spreadsheet-2",
+  "version": "1.0.0",
   "description": "a javascript xpreadsheet",
   "types": "src/index.d.ts",
   "main": "src/index.js",
@@ -10,10 +10,11 @@
     "src"
   ],
   "author": "myliang <liangyuliang0335@gmail.com>",
+  "contributors": ["Jurriaan Schreuder <jschreuder@kexxu.com>"],
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/myliang/x-spreadsheet.git"
+    "url": "https://github.com/kexxu-robotics/x-spreadsheet-2.git"
   },
   "nyc": {
     "all": true,

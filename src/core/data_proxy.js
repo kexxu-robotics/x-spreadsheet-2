@@ -464,7 +464,22 @@ export default class DataProxy {
     const { selector } = this;
     navigator.clipboard.readText().then((content) => {
       const contentToPaste = this.parseClipboardContent(content);
+
+      // remove trailing enter if present
+      if(contentToPaste[contentToPaste.length-1].length === 1 && contentToPaste[contentToPaste.length-1][0] === ''){
+        contentToPaste.pop();
+      }
+
       let startRow = selector.ri;
+
+      // make room
+      console.log("cur", startRow, "len", this.rows.len);
+      let spaceToMake = contentToPaste.length - (this.rows.len - startRow)
+      if(spaceToMake > 0){
+        this.insert("row", spaceToMake);
+      }
+
+      // paste
       contentToPaste.forEach((row) => {
         let startColumn = selector.ci;
         row.forEach((cellContent) => {
@@ -498,6 +513,8 @@ export default class DataProxy {
 
     if (/\r\n/.test(txt)) lines = txt.split('\r\n').map(it => it.replace(/"/g, '').split('\t'));
     else lines = txt.split('\n').map(it => it.replace(/"/g, '').split('\t'));
+
+    console.log("pasteFromText lines:", lines);
 
     if (lines.length) {
       const { rows, selector } = this;

@@ -330,6 +330,7 @@ function cut() {
 }
 
 function paste(what, evt) {
+  console.log("paste", what, evt);
   const { data } = this;
   if (data.settings.mode === 'read') return;
   if (data.clipboard.isClear()) {
